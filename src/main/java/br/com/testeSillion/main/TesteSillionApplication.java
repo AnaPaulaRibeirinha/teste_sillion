@@ -18,19 +18,24 @@ public class TesteSillionApplication {
 
         HashMap<String, Integer> wordCount = new HashMap<>();
 
-        try {
+        while(true) {
             System.out.println("Digite a URL:");
-            url = scanner.nextLine();
-        } catch (Exception e) {
-            throw new RuntimeException("Ocorreu um erro ao tentar validar a URL digitada");
+            url = scanner.nextLine().trim();
+            if(!url.isEmpty()) {
+                break;
+            } else {
+                System.out.println("A url não pode ser vazia.");
+            }
         }
 
-        try {
+        while (true) {
             System.out.println("Digite a frase a ser buscada:");
-            phrase = scanner.nextLine();
-            words = phrase.split(" ");
-        } catch (Exception e) {
-            throw new RuntimeException("Ocorreu um erro ao tentar validar a frase digitada");
+            phrase = scanner.nextLine().trim();
+            if(!phrase.isEmpty()) {
+                break;
+            } else {
+                System.out.println("A frase não pode ser vazia.");
+            }
         }
 
         try {
