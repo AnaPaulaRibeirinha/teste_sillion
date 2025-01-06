@@ -32,6 +32,7 @@ public class TesteSillionApplication {
             System.out.println("Digite a frase a ser buscada:");
             phrase = scanner.nextLine().trim();
             if(!phrase.isEmpty()) {
+                words = phrase.split(" ");
                 break;
             } else {
                 System.out.println("A frase não pode ser vazia.");
