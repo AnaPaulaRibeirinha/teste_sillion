@@ -26,7 +26,7 @@ public class TesteSillionApplication {
         }
 
         try {
-            System.out.println("Digite a frase a ser buscada");
+            System.out.println("Digite a frase a ser buscada:");
             phrase = scanner.nextLine();
             words = phrase.split(" ");
         } catch (Exception e) {

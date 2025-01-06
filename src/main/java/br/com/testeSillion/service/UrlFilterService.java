@@ -23,6 +23,10 @@ public class UrlFilterService {
     }
 
     public int countContentFromUrl(String content, String target) throws Exception {
+
+        content = content.toLowerCase();
+        target = target.toLowerCase();
+
         int counter = 0;
         int index = content.indexOf(target);
         while (index != -1) {
