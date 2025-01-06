@@ -41,26 +41,12 @@ public class TesteSillionApplication {
 
         try {
             content = urlFilterService.searchContentFromUrl(url);
-        } catch (Exception e) {
-            throw new RuntimeException("Ocorreu um erro ao tentar buscar a URL");
-        }
-
-        try {
             counterPhrases = urlFilterService.countContentFromUrl(content,phrase);
-        } catch (Exception e) {
-            throw new RuntimeException("Ocorreu um erro ao tentar encontrar a contagem da frase inteira");
-        }
-
-        try {
             wordCount = urlFilterService.countEachWordContentFromUrl(words, content);
-        } catch (Exception e) {
-            throw new RuntimeException("Ocorreu um erro ao tentar contar cada palavra");
-        }
-
-        try {
             urlFilterService.showResult(counterPhrases, phrase, wordCount);
         } catch (Exception e) {
-            throw new RuntimeException("Ocorreu um erro ao apresentar os resultados da pesquisa");
+            throw new RuntimeException(e.getMessage());
         }
+        
     }
 }
