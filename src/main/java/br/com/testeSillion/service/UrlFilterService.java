@@ -8,7 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UrlFilterService {
-    public static String searchContentFromUrl(String url) throws Exception {
+
+    public UrlFilterService() {
+    }
+
+    public String searchContentFromUrl(String url) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -18,7 +22,7 @@ public class UrlFilterService {
         return response.body();
     }
 
-    public static int countContentFromUrl(String content, String target) throws Exception {
+    public int countContentFromUrl(String content, String target) throws Exception {
         int counter = 0;
         int index = content.indexOf(target);
         while (index != -1) {
@@ -28,11 +32,19 @@ public class UrlFilterService {
         return counter;
     }
 
-    public static HashMap<String, Integer> countEachWordContentFromUrl(String[] words, String content) throws Exception {
+    public HashMap<String, Integer> countEachWordContentFromUrl(String[] words, String content) throws Exception {
         HashMap<String, Integer> wordsCounts = new HashMap<>();
         for (String word : words) {
             wordsCounts.put(word, countContentFromUrl(content, word));
         }
         return wordsCounts;
+    }
+
+    public void showResult(Integer counterPhrases, String phrase, HashMap<String, Integer> wordCount ) {
+        System.out.println("Resultados");
+        System.out.println(phrase + " => " + counterPhrases + " vezes");
+        for (Map.Entry<String, Integer> e : wordCount.entrySet()) {
+            System.out.println(e.getKey() + " => repete " + e.getValue() + " vezes");
+        }
     }
 }
