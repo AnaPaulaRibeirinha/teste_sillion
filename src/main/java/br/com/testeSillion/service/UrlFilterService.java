@@ -46,21 +46,22 @@ public class UrlFilterService {
     }
 
     public HashMap<String, Integer> countEachWordContentFromUrl(String[] words, String content) throws Exception {
-
+        HashMap<String, Integer> wordsCounts = new HashMap<>();
         try {
-            HashMap<String, Integer> wordsCounts = new HashMap<>();
-            for (String word : words) {
-                wordsCounts.put(word, countContentFromUrl(content, word));
+            if (!(words.length == 1)) {
+                for (String word : words) {
+                    wordsCounts.put(word, countContentFromUrl(content, word));
+                }
             }
-            return wordsCounts;
         } catch (Exception e) {
             throw new RuntimeException("Ocorreu um erro ao tentar contar cada palavra.");
         }
+        return wordsCounts;
     }
 
     public void showResult(Integer counterPhrases, String phrase, HashMap<String, Integer> wordCount ) {
         try {
-            System.out.println("Resultados");
+            System.out.println("Resultados:");
             System.out.println(phrase + " => " + counterPhrases + " vezes");
             for (Map.Entry<String, Integer> e : wordCount.entrySet()) {
                 System.out.println(e.getKey() + " => repete " + e.getValue() + " vezes");
